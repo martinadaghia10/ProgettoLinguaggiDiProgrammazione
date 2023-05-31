@@ -1,0 +1,21 @@
+string message = "Hello, world!";
+int x = 10;
+bool flag = true;
+x = x + 5;
+if (x > 15) {
+    flag = false;
+} else {
+    flag = true;
+    x = x * 2;
+}
+int x = 10;
+float y = 3.14;
+
+boolean flag = true;
+
+// Questa riga contiene un errore sintattico
+int z = x + y;
+
+// Questa riga contiene un identificatore non valido
+int 123abc = 5;
+
