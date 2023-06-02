@@ -25,31 +25,6 @@ public class Main {
         List<Token> errori = new ArrayList<>();
         Token token = lexer.nextToken();
 
-/*
-        while (token.getType() != antlr.SimpLanPlusLexer.EOF){
-            if (token.getType() == antlr.SimpLanPlusLexer.ERR) { // se il token è un errore lessicale. getType mi restituisce il tipo del token
-                errori.add(token); //aggiungo all'array list degli errori il token
-
-            }
-            token = lexer.nextToken();
-        }
-        File f = new File("src/errori.txt");
-        if (!f.exists()){
-            f.createNewFile();
-        } else {
-            f.delete();
-            f.createNewFile();
-        }
-
-        for (int i=0; i<errori.size() ;i++){
-            int errLine = errori.get(i).getLine();
-            String errStr = errori.get(i).getText();
-            int errPos = errori.get(i).getCharPositionInLine() +1;
-            String toWrite = "Errore " + i+1 + " a linea " + errLine + ", numero posizione " + errPos + " = " + errStr + "\n";
-            Files.write(Paths.get("src/errori.txt"), toWrite.getBytes(), StandardOpenOption.APPEND);
-        }
-        */
-
         //controlliamo tutti i token presi dal file di input
         for (Token tok : lexer.getAllTokens()) {
             if (tok.getType() == lexer.ERR) { // se il token è un errore lessicale. getType mi restituisce il tipo del token
@@ -95,7 +70,7 @@ public class Main {
         }
 
 
-        /* ESERCIZIO 2*/
+        /* ESERCIZIO 2 */
         /*
         String fileInput2 = new String (Files.readAllBytes(Paths.get("src/input2.txt")));
         CharStream input2 = CharStreams.fromString(fileInput2);
@@ -113,5 +88,9 @@ public class Main {
 
         }
         */
+
+        /* ESERCIZIO 3 */
+
+
     }
 }

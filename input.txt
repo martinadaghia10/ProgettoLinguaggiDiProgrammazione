@@ -1,21 +1,22 @@
-string message = "Hello, world!";
-int x = 10;
-bool flag = true;
-x = x + 5;
-if (x > 15) {
-    flag = false;
-} else {
-    flag = true;
-    x = x * 2;
-}
+/*ESEMPIO 1
+    Il token "2.5E" è un formato non valido per un numero in notazione scientifica.
+*/
 int x = 10;
 float y = 3.14;
+double z = 2.5E;
 
+/*ESEMPIO 2*/
 boolean flag = true;
+string message = "Hello, world!";
+int z = x + y; // Questa riga contiene un errore sintattico
 
-// Questa riga contiene un errore sintattico
-int z = x + y;
+/*ESEMPIO 3*/
+char c = 'A';
+String message = "Hello, world!";
+String escapedString = "This is a \"quoted\" string.";
+String unterminatedString = "This string is not terminated;
 
-// Questa riga contiene un identificatore non valido
-int 123abc = 5;
+
+
+
 
