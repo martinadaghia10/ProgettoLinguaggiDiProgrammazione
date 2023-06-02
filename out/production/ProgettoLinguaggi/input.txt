@@ -1,0 +1,22 @@
+/*ESEMPIO 1
+    Il token "2.5E" è un formato non valido per un numero in notazione scientifica.
+*/
+int x = 10;
+float y = 3.14;
+double z = 2.5E;
+
+/*ESEMPIO 2*/
+boolean flag = true;
+string message = "Hello, world!";
+int z = x + y; // Questa riga contiene un errore sintattico
+
+/*ESEMPIO 3*/
+char c = 'A';
+String message = "Hello, world!";
+String escapedString = "This is a \"quoted\" string.";
+String unterminatedString = "This string is not terminated;
+
+
+
+
+

@@ -1,0 +1,12 @@
+ERRORE: 
+     riga 5, numero di posizione 12 = .
+
+ERRORE: 
+     riga 6, numero di posizione 13 = .
+
+ERRORE: 
+     riga 10, numero di posizione 18 = "
+
+ERRORE: 
+     riga 10, numero di posizione 32 = "
+
