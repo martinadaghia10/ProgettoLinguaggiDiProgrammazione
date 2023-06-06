@@ -40,9 +40,9 @@ public class IdNode implements Node {
             getAR += "store T1 0(T1) \n";
         return
                 "move AL T1 \n"
-                        + getAR  //risalgo la catena statica
-                        + "subi T1 " + type.getoffset() +"\n" //metto offset sullo stack
-                        + "store A0 0(T1) \n" ; //carico sullo stack il valore all'indirizzo ottenuto
+                + getAR  //risalgo la catena statica
+                + "subi T1 " + type.getoffset() +"\n" //metto offset sullo stack
+                + "store A0 0(T1) \n" ; //carico sullo stack il valore all'indirizzo ottenuto
     }
 
     public String toPrint(String s) {

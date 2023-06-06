@@ -6,11 +6,11 @@ import evaluator.SimpLanlib;
 import semanticanalysis.SemanticError;
 import semanticanalysis.SymbolTable;
 
-public class AndNode implements Node {
+public class GreatNode implements Node {
     private Node left;
     private Node right;
 
-    public AndNode(Node _left, Node _right) {
+    public GreatNode(Node _left, Node _right) {
         left = _left;
         right = _right;
     }
@@ -27,35 +27,30 @@ public class AndNode implements Node {
 
     @Override
     public Type typeCheck() {
-        if (left.typeCheck() instanceof BoolType && right.typeCheck() instanceof BoolType)
-            return new BoolType();
-        else {
-            System.out.println("Type Error: Non-boolean operands in logical AND");
-            return new ErrorType();
-        }
+        return new BoolType();
     }
 
     @Override
     public String codeGeneration() {
-        String l1 = SimpLanlib.generateLabel();
-        String l2 = SimpLanlib.generateLabel();
+        String labelTrue = SimpLanlib.freshLabel();
+        String labelEnd = SimpLanlib.freshLabel();
+
 
         return left.codeGeneration() +
                 "pushr A0 \n" +
                 right.codeGeneration() +
                 "popr T1 \n" +
-                "and T1 A0 \n" +
-                "popr A0 \n" +
-                "bz A0 " + l1 + " \n" +
-                "pushr true \n" +
-                "jmp " + l2 + " \n" +
-                l1 + ": pushr false \n" +
-                l2 + ":";
+                "gt A0 T1 " + labelTrue + " \n" +
+                "push 0 \n" +
+                "b " + labelEnd + " \n" +
+                labelTrue + ": \n" +
+                "push 1 \n" +
+                labelEnd + ": \n";
     }
 
     @Override
     public String toPrint(String s) {
-        return s + "And\n" +
+        return s + "Great\n" +
                 left.toPrint(s + "  ") +
                 right.toPrint(s + "  ");
     }

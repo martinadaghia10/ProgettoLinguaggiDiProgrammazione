@@ -38,4 +38,5 @@ public class STentry {
         return label ;
     }
 
+    public Type getType() { return type;}
 }

@@ -88,4 +88,25 @@ public class SymbolTable {
         offset.add(offs) ;
     }
 
+
+    public Type getType(String id, int nesting) {
+        int n = nesting;
+        boolean found = false;
+        while (n >= 0 && !found) {
+            HashMap<String, STentry> H = symbol_table.get(n);
+            STentry entry = H.get(id);
+            if (entry != null) {
+                found = true;
+                return entry.getType();
+            }
+            n--;
+        }
+
+        // L'identificatore non è stato trovato nella tabella dei simboli
+        // Gesto l'errore o restituisco un tipo di default
+        System.out.println("Type Error: Variable " + id + " not found in symbol table");
+        return new ErrorType();
+    }
+
+
 }

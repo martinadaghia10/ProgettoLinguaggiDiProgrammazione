@@ -6,7 +6,7 @@ import semanticanalysis.SemanticError;
 import semanticanalysis.SymbolTable;
 
 public class Type implements Node {
-    public boolean isEqual(Type A, Type B) {
+    public static boolean isEqual(Type A, Type B) {
         if (A.getClass().equals(B.getClass())) return true ;
         else return false ;
     }

@@ -6,11 +6,11 @@ import evaluator.SimpLanlib;
 import semanticanalysis.SemanticError;
 import semanticanalysis.SymbolTable;
 
-public class AndNode implements Node {
+public class GreatEqualNode implements Node {
     private Node left;
     private Node right;
 
-    public AndNode(Node _left, Node _right) {
+    public GreatEqualNode(Node _left, Node _right) {
         left = _left;
         right = _right;
     }
@@ -27,35 +27,34 @@ public class AndNode implements Node {
 
     @Override
     public Type typeCheck() {
-        if (left.typeCheck() instanceof BoolType && right.typeCheck() instanceof BoolType)
+        if (left.typeCheck() instanceof IntType && right.typeCheck() instanceof IntType) {
             return new BoolType();
-        else {
-            System.out.println("Type Error: Non-boolean operands in logical AND");
+        } else {
+            System.out.println("Type Error: Non integers in greater than or equal to comparison");
             return new ErrorType();
         }
     }
 
     @Override
     public String codeGeneration() {
-        String l1 = SimpLanlib.generateLabel();
-        String l2 = SimpLanlib.generateLabel();
+        String labelTrue = SimpLanlib.freshLabel();
+        String labelEnd = SimpLanlib.freshLabel();
 
         return left.codeGeneration() +
                 "pushr A0 \n" +
                 right.codeGeneration() +
                 "popr T1 \n" +
-                "and T1 A0 \n" +
-                "popr A0 \n" +
-                "bz A0 " + l1 + " \n" +
-                "pushr true \n" +
-                "jmp " + l2 + " \n" +
-                l1 + ": pushr false \n" +
-                l2 + ":";
+                "bge T1 A0 " + labelTrue + " \n" + //branch if greater than or equal to
+                "push 0 \n" +
+                "b " + labelEnd + " \n" +
+                labelTrue + ": \n" +
+                "push 1 \n" +
+                labelEnd + ": \n";
     }
 
     @Override
     public String toPrint(String s) {
-        return s + "And\n" +
+        return s + "Greatequal\n" +
                 left.toPrint(s + "  ") +
                 right.toPrint(s + "  ");
     }

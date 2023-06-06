@@ -2,6 +2,7 @@ package ast;
 
 import java.util.ArrayList;
 
+import evaluator.SimpLanlib;
 import semanticanalysis.SemanticError;
 import semanticanalysis.SymbolTable;
 
@@ -31,8 +32,9 @@ public class OrNode implements Node {
 
     @Override
     public String codeGeneration() {
-        String labelTrue = FreshLabelGenerator.generateLabel("true");
-        String labelEnd = FreshLabelGenerator.generateLabel("end");
+        String labelTrue = SimpLanlib.freshLabel();
+        String labelEnd = SimpLanlib.freshLabel();
+
 
         return left.codeGeneration() +
                 "pushr A0 \n" +
