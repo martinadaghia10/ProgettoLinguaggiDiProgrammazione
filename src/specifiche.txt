@@ -1,0 +1,109 @@
+Progetto AA 2022-23 -- SimpLanPlus [PUNTEGGIO MAX: 6 PUNTI]
+
+SimpLanPlus è un semplice linguaggio imperativo che estende SimpLan, in cui
+
+* i tipi includono anche il tipo void ;
+
+* le dichiarazioni di variabili sono:  type ID (senza inizializzazione) ;
+
+* le funzioni possono essere ricorsive (ma non mutuamente ricorsive)
+ESEMPIO: int fact(int n){ if (n == 0){ 1 } else { n*fact(n-1) }}
+
+* ci sono i comandi: un programma o il corpo di una funzione può essere stm oppure dec stm
+
+* sono ammessi corpi di funzioni del tipo { stm ; exp }. In tal caso la funzione, dopo
+aver valutato stm, ritorna il valore di exp.
+ESEMPIO: int x ; int f(int z){ x = 1 ; x+z} f(3)   ritorna 4
+
+VEDERE SINTASSI IN ALLEGATO -- file SimpLanPlus.g4
+
+PROGETTO: Sviluppo di un Compilatore per SimpLanPlus + report in cui si
+spiegano le scelte progettuali
+
+ESERCIZIO 1
+L'analizzatore lessicale deve ritornare la lista degli errori lessicali in un file
+di output. Il report deve contenere la discussione di tre esempi e degli errori segnalati
+
+ESERCIZIO 2
+Sviluppare la tabella dei simboli del programma.
+Il codice sviluppato deve controllare
+
+* identificatori/funzioni non dichiarati
+* identificatori/funzioni dichiarate piu` volte nello stesso ambiente
+
+ESERCIZIO 3
+Sviluppare un'analisi semantica che verifica
+
+* la correttezza dei tipi (in particolare numero e tipo dei parametri attuali
+  se conformi al numero e tipo dei parametri formali)
+
+* (PUNTEGGIO +2, IN ASSENZA DI QUESTO PUNTO IL VOTO MAX DEL PROGETTO E` 4 PUNTI)
+uso di variabili non inizializzate [PER SEMPLICITA` ASSUMERE CHE LE FUNZIONI NON
+ACCEDONO MAI A VARIABILI GLOBALI. QUESTA ASSUNZIONE VALE SOLO PER QUESTO PUNTO NON
+PER GLI ALTRI.]
+
+Il report deve contenere TUTTE le regole semantiche utilizzate e relativa discussione.
+
+Codici da verificare/discutere:
+
+1) int a; int b; int c ; c = 2 ;
+     if (c > 1) { b = c ; } else { a = b ; }
+   } // ERRORE perche` b e` usata ma non inizializzata
+
+2)   int a; int b; int c ;
+     void f(int n){
+	  int x ; int y ;
+          if (n > 0) { x = n ;} else { y = n+x ;}
+     }
+     c = 1 ; f(0) ;  // ERRORE perche` x e` usata ma non inizializzata (ramo else)
+
+
+3)   void h(int n){
+  	  int x ; int y ;
+          if (n==0){ x = n+1 ;} else { h(n-1) ; x = n ; y = x ;}
+     }
+     h(5) ;  // CORRETTA
+
+
+4)   int a;
+     void h(int n){
+  	  int x ; int y ;
+          if (n==0){ x = n+1 ;} else { h(n-1) ; y = x ;}
+     }
+     h(5) ;  // ERRORE
+
+
+ESERCIZIO 4
+Estendendo l'interprete di SimpLan, implementare l'interprete di SimpLanPlus. I
+codici da verificare sono
+
+int x ;
+void f(int n){
+	if (n == 0) { n = 0 ; }       // n e` gia` uguale a 0; equivale a fare skip
+	else { x = x * n ; f(n-1) ; }
+}
+x = 1 ;
+f(10)
+=====
+
+int u ;
+int f(int n){
+        int y ;
+	y = 1 ;
+	if (n == 0) { y }
+	else { y = f(n-1) ; y*n }
+}
+u = 6 ;
+f(u)
+
+=====
+int u ;
+void f(int m, int n){
+	if (m>n) { u = m+n ;}
+	else { int x ; x = 1 ; f(m+1,n+1) ; }
+}
+f(5,4) ; u
+// cosa succede se la invoco con f(4,5)?
+=====
+
+
