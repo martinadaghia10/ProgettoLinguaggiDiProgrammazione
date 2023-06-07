@@ -1,0 +1,48 @@
+ERRORE: 
+     riga 5, numero di posizione 12 = .
+
+ERRORE: 
+     riga 6, numero di posizione 13 = .
+
+ERRORE: 
+     riga 10, numero di posizione 18 = "
+
+ERRORE: 
+     riga 10, numero di posizione 32 = "
+
+ERRORE: 
+     riga 14, numero di posizione 10 = '
+
+ERRORE: 
+     riga 14, numero di posizione 12 = '
+
+ERRORE: 
+     riga 15, numero di posizione 18 = "
+
+ERRORE: 
+     riga 15, numero di posizione 32 = "
+
+ERRORE: 
+     riga 16, numero di posizione 24 = "
+
+ERRORE: 
+     riga 16, numero di posizione 35 = \
+
+ERRORE: 
+     riga 16, numero di posizione 36 = "
+
+ERRORE: 
+     riga 16, numero di posizione 43 = \
+
+ERRORE: 
+     riga 16, numero di posizione 44 = "
+
+ERRORE: 
+     riga 16, numero di posizione 52 = .
+
+ERRORE: 
+     riga 16, numero di posizione 53 = "
+
+ERRORE: 
+     riga 17, numero di posizione 29 = "
+
